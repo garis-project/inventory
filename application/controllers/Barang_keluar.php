@@ -219,6 +219,7 @@ class Barang_keluar extends CI_Controller
 		$id_barang_keluar = $_GET['id'];
 		$delete = $this->m_crud->delete($this->_table, ['id_barang_keluar' => $id_barang_keluar]);
 		if ($delete) {
+			$delete = $this->m_crud->delete('barang_keluar_rinci', ['id_barang_keluar_rinci' => $id_barang_keluar]);
 			$this->session->set_flashdata('success', 'hapus');
 			redirect('barang_keluar');
 		} else {

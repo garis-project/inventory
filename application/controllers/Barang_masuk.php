@@ -129,6 +129,7 @@ class Barang_masuk extends CI_Controller
 		$id_barang_masuk = $_GET['id'];
 		$delete = $this->m_crud->delete($this->_table, ['id_barang_masuk' => $id_barang_masuk]);
 		if ($delete) {
+			$delete = $this->m_crud->delete('barang_masuk_rinci', ['id_barang_masuk_rinci' => $id_barang_masuk]);
 			$this->session->set_flashdata('success', 'hapus');
 			redirect('barang_masuk');
 		} else {
